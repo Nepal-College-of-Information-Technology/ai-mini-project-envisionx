@@ -1,4 +1,4 @@
-# AI Mini Project
+# AI Mini Project(ChatWave)
 
 The AI Mini Project aims to understand people's sentiment through text analysis. We will utilize a text generation model to facilitate conversations and analyze the expressed sentiments. Based on the detected emotions, we will provide song recommendations to individuals.
 
