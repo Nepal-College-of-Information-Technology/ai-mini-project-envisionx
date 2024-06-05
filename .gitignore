@@ -4,3 +4,4 @@ db.sqlite3
 data/cleaned_text_data.csv
 data/test_data.csv
 *.csv
+model/glove.6B.300d.txt
