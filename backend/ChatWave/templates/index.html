@@ -1,10 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChatBox</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'home/styles.css' %}">
+    
 </head>
 <body>
     <div class="container">
@@ -18,7 +21,10 @@
                 </div>
             </div>
             <div class="mood-section">
-                <div class="image-placeholder"></div>
+                <div class="image-placeholder">
+
+                    <!-- Spotify here -->
+                </div>
                 <div class="button-container">
                     <button>Change</button>
                     <button>Add to playlist</button>
@@ -27,7 +33,13 @@
                     <h3>Current Mood</h3>
                     <p>Sad</p>
                 </div>
-                <div class="memory">Memory</div>
+                <div class="memory">Memory
+
+                    <div>
+                        <h2>This is a different section for memories</h2>
+                    </div>
+                </div>
+                
             </div>
         </main>
     </div>
