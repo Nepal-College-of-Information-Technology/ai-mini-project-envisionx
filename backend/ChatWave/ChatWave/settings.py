@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import firebase_admin
-from firebase_admin import credentials
+# import firebase_admin
+# from firebase_admin import credentials
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,5 +134,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-cred = credentials.Certificate(f"{BASE_DIR}/chatwavefirebase.json")
-firebase_admin.initialize_app(cred)
+# cred = credentials.Certificate(f"{BASE_DIR}/chatwavefirebase.json")
+# firebase_admin.initialize_app(cred)
