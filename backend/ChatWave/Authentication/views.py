@@ -4,7 +4,7 @@ from django.http import JsonResponse
 # from firebase_admin import auth
 
 def registerLogic(request):
-    return render(request, 'regiser.html')
+    return render(request, 'register.html')
     # if request.method == "POST":
     #     email = request.POST["email"]
     #     password = request.POST["password"]
