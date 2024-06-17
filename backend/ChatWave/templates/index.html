@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBox</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'home/styles.css' %}">
+    
+</head>
+<body>
+    <div class="container">
+        <main>
+            <div class="room">
+                <h2>Room</h2>
+
+            </div>
+            <div class="chatbox">
+                <h2>ChatBox</h2>
+                <div class="messages">
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="Say your thoughts...">
+                </div>
+            </div>
+            <div class="mood-section">
+                <div class="image-placeholder">
+
+                    <!-- Spotify here -->
+                </div>
+                <div class="button-container">
+                    <button>Change</button>
+                    <button>Add to playlist</button>
+                </div>
+                <div class="current-mood">
+                    <h3>Current Mood</h3>
+                    <p>Sad</p>
+                </div>
+                <div class="memory">Memory
+
+                    <div>
+                        This is a different section for memories
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+</body>
+</html>

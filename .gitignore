@@ -6,3 +6,4 @@ data/test_data.csv
 *.csv
 __pycache__
 /.venv
+model/glove.6B.300d.txt

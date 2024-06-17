@@ -11,6 +11,7 @@ The AI Mini Project aims to understand people's sentiment through text analysis.
 ## Project Details
 
 The project will be developed as a web application using Django framework.
+![system architecture](https://github.com/Nepal-College-of-Information-Technology/ai-mini-project-envisionx/blob/master/diagrams/architecture.png)
 
 ## Timeline
 
