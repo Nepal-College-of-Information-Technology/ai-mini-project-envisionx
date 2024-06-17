@@ -9,6 +9,7 @@ from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from .tokens import generate_token
+from django.utils.datastructures import MultiValueDictKeyError
 from django.contrib.auth import get_user_model
 
 User=get_user_model()
@@ -18,30 +19,34 @@ User=get_user_model()
 
 def registerLogic(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        confirm = request.POST['confirm-password']
-
+        try:
+            username = request.POST['username']
+            email = request.POST['email']
+            password = request.POST['password']
+            confirm = request.POST['confirm']
+        except MultiValueDictKeyError as e:
+            messages.error(request, f"Missing field: {str(e)}")
+            return redirect('register')
+        
         if User.objects.filter(username=username).exists():
             messages.error(request, "Username already exists!")
-            return redirect('sign_up')
+            return redirect('register')
         
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email already exists!")
-            return redirect('sign_up')
+            return redirect('register')
         
         if password != confirm:
             messages.error(request, "Passwords do not match!")
-            return redirect('sign_up')
+            return redirect('register')
 
-        myUser = User.objects.create_user(email, username, password)
+        myUser = User.objects.create_user(username=username, email=email, password=password)
         myUser.is_active = False
         myUser.save()
 
         # Welcome Email
-        subject = "Welcome to Blog App!!"
-        message = f"Hello, {myUser.username}!!\nWelcome to Blog App!!"
+        subject = "Welcome to ChatWave!!"
+        message = f"Hello, {myUser.username}!!\nWelcome to ChatWave!!"
         from_email = settings.EMAIL_HOST_USER
         to_list = [myUser.email]
         send_mail(subject, message, from_email, to_list, fail_silently=True)
@@ -50,7 +55,7 @@ def registerLogic(request):
 
         # Account activation email
         current_site = get_current_site(request)
-        email_subject = "Activate your account for Blog App"
+        email_subject = "Activate your account for Chatwave"
         message2 = render_to_string('email_confirmation.html', {
             'name': myUser.username,
             'domain': current_site.domain,
@@ -67,11 +72,9 @@ def registerLogic(request):
         email.fail_silently = True
         email.send()
 
-        return redirect('sign_in')  # Redirect to sign_in after signup
+        return redirect('login')  # Redirect to sign_in after signup
     
     return render(request, 'register.html')
-
-    
 
 
 
@@ -92,7 +95,22 @@ def loginLogic(request):
     return render(request, 'login.html')   
    
             
-                    
+def activate(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        myUser = User.objects.get(pk=uid)  # Corrected from User.object to User.objects
+    
+    except (ValueError, TypeError, OverflowError, User.DoesNotExist):
+        myUser = None
+    
+    if myUser is not None and generate_token.check_token(myUser, token):
+        myUser.is_active = True
+        myUser.save()
+        login(request, myUser)
+        return redirect('home')  # Redirect to 'home' after successful activation
+    
+    else:
+        return render(request, 'activation_failed.html')                  
 
 
 
