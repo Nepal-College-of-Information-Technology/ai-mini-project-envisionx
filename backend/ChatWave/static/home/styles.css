@@ -36,14 +36,50 @@ main {
     justify-content: space-between;
 }
 
+.room{
+    background-color: #EEF7FF;
+    border-radius: 10px;
+    width: 30%;
+    margin-right: 50px; 
+}
+
+.room h2 {
+    color: #4D869C;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.room button {
+    background-color: #4D869C;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 50px;
+    margin-bottom: 35px;
+    cursor: pointer;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.room button:hover {
+    background-color: #3E6C7E;
+}
+
 .chatbox {
     background-color: #EEF7FF;
     border-radius: 10px;
-    width: 120%;
+    width: 100%;
     margin-right: 50px;
 }
 
-.chatbox h2 {
+.chatbox h2{
+    color: #4D869C;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 32px;
     margin-bottom: 20px;
 }
 
@@ -54,6 +90,7 @@ main {
 .input-box {
     display: flex;
     justify-content: center;
+    padding-top: 120px;
 }
 
 .input-box input {
@@ -61,7 +98,7 @@ main {
     font-size: 16px;
     padding: 100px;
     border-radius: 10px;
-    border: 0.5px solid #cccc;
+    border: 2px solid #cccc;
     text-align: left;
     padding-top: 20px;
     padding-left: 20px;
@@ -104,7 +141,7 @@ main {
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 20px 60px;
+    padding: 15px 50px;
     margin-bottom: 35px;
     cursor: pointer;
     -webkit-transition: 0.2s;
@@ -136,13 +173,6 @@ main {
     text-align: left;
     font-size: 14px;
     font-weight: bolder;
-}
-
-.chatbox h2{
-    color: #4D869C;
-    margin-top: 25px;
-    text-align: center;
-    font-size: 32px;
 }
 
 
