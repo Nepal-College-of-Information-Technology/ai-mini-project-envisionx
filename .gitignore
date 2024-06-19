@@ -1,6 +1,6 @@
 chatwavefirebase.json
 db.sqlite3
-*.json
+# *.json
 data/cleaned_text_data.csv
 data/test_data.csv
 *.csv
