@@ -1,12 +1,4 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'home/styles1.css' %}">
-</head>
+{% extends 'main.html' %} {% block content %}
 <body>
     <div class="container">
         <div class="logo-section">
@@ -34,7 +26,4 @@
                 <button type="submit">Register</button>
             </form>
             <p class="sign-text">Already have an account? <a href="login">Sign in</a></p>
-        </div>
-    </div>
-</body>
-</html>
+{% endblock %}
