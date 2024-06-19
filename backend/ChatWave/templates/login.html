@@ -1,40 +1,32 @@
-{% extends 'main.html' %} {% block content %}
-
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'home/styles1.css' %}">
+</head>
 <body>
-  <div class="container">
-    <div class="logo-section">
-      <p>A</p>
-    </div>
-    <div class="login-section">
-      <h2>Login</h2>
-      <form id="loginForm" method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
-        <div class="input-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            name="email"
-            required
-          />
+    <div class="container">
+        <div class="logo-section">
+            <img class="logo" src = "{% static 'home/chatwave.png' %}" alt="ChatWave"/>
         </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter your password"
-            required
-          />
+        <div class="login-section">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p class="sign-text">New user? <a href="register">Sign up</a></p>
         </div>
-        <button type="submit">Login</button>
-      </form>
-      <p class="sign-text">
-        New user? <a href="{% url 'register' %}">Sign up</a>
-      </p>
     </div>
-  </div>
 </body>
-{% endblock %}
+</html>

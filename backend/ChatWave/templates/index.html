@@ -14,7 +14,24 @@
   </head>
   <body>
     <div class="container">
+        <header>
+            <img class="header-image" src = "{% static 'home/chatwave.png' %}" alt="ChatWave"/>
+            <div class="button-header-container">
+            <a href="../account/login"><button>Log Out</button></a>
+            </div>
+        </header>
         <main>
+            <div class="room">
+                <h2>Room</h2>
+                <div class="button-room-container">
+                    <button>Room 1</button>
+                    <button>Room 2</button>
+                    <button>Room 3</button>
+                    <button>Room 4</button>
+                    <button>Room 5</button>
+                </div>
+            </div>
+
             <div class="chatbox">
                 <h2>ChatBox</h2>
                 <div class="messages">

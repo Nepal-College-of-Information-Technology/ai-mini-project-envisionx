@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 481.27 230.68">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: BrushScriptMT, 'Brush Script MT';
+        font-size: 200px;
+        letter-spacing: -.05em;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill: #4e869c;
+      }
+
+      .cls-2 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        font-family: ForteMT, Forte;
+        font-size: 104.94px;
+      }
+
+      .cls-4 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-5, .cls-6 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <text transform="translate(0 163.1)"><tspan><tspan class="cls-6" x="0" y="0">Cha</tspan><tspan class="cls-5" x="174.93" y="0">t</tspan><tspan class="cls-1" x="205.8" y="0">W</tspan><tspan class="cls-2" x="335.45" y="0">a</tspan><tspan class="cls-4" x="393.35" y="0">v</tspan><tspan class="cls-3" x="436.49" y="0">e</tspan></tspan></text>
+</svg>

@@ -8,13 +8,40 @@
 }
 
 body {
-    background: rgb(39,55,77);
     background: linear-gradient(180deg, rgba(39,55,77,1) 0%, rgba(77,134,156,1) 70%);
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    height: 110vh;
     margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+button{
+    background-color: #4D869C;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #3E6C7E;
+}
+
+.header-image {
+    max-width: 13%;
+    height: auto;
+    margin-top: -55px;
 }
 
 .container {
@@ -51,20 +78,28 @@ main {
     margin-bottom: 20px;
 }
 
-.room button {
+.room .button-room-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.room .button-room-container button {
     background-color: #4D869C;
     font-size: 16px;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 15px 50px;
-    margin-bottom: 35px;
+    padding: 15px 80px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     cursor: pointer;
     -webkit-transition: 0.2s;
     transition: 0.2s;
 }
 
-.room button:hover {
+.room .button-room-container button:hover {
     background-color: #3E6C7E;
 }
 
@@ -90,7 +125,7 @@ main {
 .input-box {
     display: flex;
     justify-content: center;
-    padding-top: 120px;
+    margin-top: 66%;
 }
 
 .input-box input {
