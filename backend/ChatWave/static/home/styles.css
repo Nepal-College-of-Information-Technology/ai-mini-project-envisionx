@@ -70,12 +70,24 @@ main {
     margin-right: 50px; 
 }
 
-.room h2 {
+.room-nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     color: #4D869C;
     margin-top: 25px;
-    text-align: center;
-    font-size: 32px;
     margin-bottom: 20px;
+}
+
+.room h2{
+    font-size: 32px;
+}
+
+.room .count{
+    border:1px solid #4D869C;
+    border-radius: 5px;
+    padding: 5px 13px;
+    
 }
 
 .room .button-room-container {
@@ -101,6 +113,27 @@ main {
 
 .room .button-room-container button:hover {
     background-color: #3E6C7E;
+}
+
+.room .add-room {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.room .add-room button {
+    background-color: #ffffff;
+    font-size: 23px;
+    color: #4D869C;
+    border: 1px solid #4D869C;
+    border-radius: 5px;
+    padding: 10px 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
 }
 
 .chatbox {
