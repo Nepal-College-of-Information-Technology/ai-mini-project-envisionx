@@ -35,9 +35,16 @@
             <div class="chatbox">
                 <h2>ChatBox</h2>
                 <div class="messages">
+                    {% for message in chat_messages reversed %}
+                        <p>{{message.author}} : {{ message.body }} </p>
+                    {% endfor %}
                 </div>
+                
                 <div class="input-box">
-                    <input type="text" placeholder="Say your thoughts...">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form }}
+                    </form>
                 </div>
             </div>
             <div class="mood-section">
