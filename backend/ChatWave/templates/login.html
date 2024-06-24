@@ -14,17 +14,27 @@
         </div>
         <div class="login-section">
             <h2>Login</h2>
-            <form id="loginForm">
+            <form id="loginForm" method="POST">
+                {% csrf_token %}
                 <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <label for="username">Username</label>
+                    <input type="username" id="username" name="username" placeholder="Enter your username" required>
                 </div>
                 <div class="input-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <input type="password" id="password" name = "password" placeholder="Enter your password" required>
                 </div>
                 <button type="submit">Login</button>
             </form>
+            {% if messages %}
+            <div class="messages">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
             <p class="sign-text">New user? <a href="register">Sign up</a></p>
         </div>
     </div>

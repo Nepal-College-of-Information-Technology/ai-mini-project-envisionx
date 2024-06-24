@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 
 
-# @login_required
+@login_required()
 def homePageLogic(request):
     chat_room = get_object_or_404(ChatRoom, room_name='Room 1')
     chat_messages = chat_room.messages.all()
