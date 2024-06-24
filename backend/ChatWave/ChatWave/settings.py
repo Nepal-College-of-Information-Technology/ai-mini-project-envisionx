@@ -37,9 +37,13 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+LOGIN_URL = '/account/login'
+LOGIN_REDIRECT_URL = '/home/' 
+
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,7 +82,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ChatWave.wsgi.application'
+# WSGI_APPLICATION = 'ChatWave.wsgi.application'
+
+ASGI_APPLICATION = "ChatWave.asgi.application"
 
 
 # Database
