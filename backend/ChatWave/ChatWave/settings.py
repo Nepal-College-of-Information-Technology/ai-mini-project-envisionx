@@ -38,11 +38,12 @@ ALLOWED_HOSTS = []
 
 
 LOGIN_URL = '/account/login'
-LOGIN_REDIRECT_URL = '/home/' 
+LOGIN_REDIRECT_URL = '/home' 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -85,6 +86,12 @@ TEMPLATES = [
 # WSGI_APPLICATION = 'ChatWave.wsgi.application'
 
 ASGI_APPLICATION = "ChatWave.asgi.application"
+
+CHANNEL_LAYERS = {
+    'default': {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 
 # Database
@@ -151,3 +158,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # cred = credentials.Certificate(f"{BASE_DIR}/chatwavefirebase.json")
 # firebase_admin.initialize_app(cred)
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels.layers.RedisChannelLayer',
+#         'CONFIG': {
+#             'hosts': [('127.0.0.1', 6379)],
+#         },
+#     },
+# }
