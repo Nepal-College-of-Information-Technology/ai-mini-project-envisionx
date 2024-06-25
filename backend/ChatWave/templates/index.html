@@ -5,6 +5,7 @@
   <head>
     <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ChatBox</title>
@@ -48,16 +49,16 @@
             </div>
             <div class="input-box">
                 <form 
-                    hx-post="{% url 'home'%}"
-                    hx-target="#messages"
-                    hx-swap="beforeend"
-                    _="on htmx:afterRequest reset() me"
-                    
-                    >
-
-                    {% csrf_token %}
-                    {{ form }}
-                </form>
+                hx-ext="ws"
+                ws-connect="ws/chat/Room%201/"
+                ws-send
+                _="on htmx:wsAfterSend reset() me">
+                {% csrf_token %}
+                {{ form }}
+            </form>
+            
+            
+            
             </div>
         </div>
 
