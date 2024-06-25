@@ -19,9 +19,13 @@
 <div class="container">
     <header>
         <img class="header-image" src="{% static 'home/chatwave.png' %}" alt="ChatWave">
+        
+        <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
         <div class="button-header-container">
-            <a href="../account/login"><button>Log Out</button></a>
+            <button type="submit" name="action" value="logout">Logout</button>
         </div>
+    </form>
     </header>
     <main>
         <div class="room">
