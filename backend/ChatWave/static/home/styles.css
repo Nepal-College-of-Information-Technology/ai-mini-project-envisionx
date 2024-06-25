@@ -11,16 +11,17 @@ body {
     background: linear-gradient(180deg, rgba(39,55,77,1) 0%, rgba(77,134,156,1) 70%);
     display: flex;
     justify-content: center;
-    height: 110vh;
+    height: 97vh;
     margin: 0;
 }
 
 header {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
-button{
+button {
     background-color: #4D869C;
     font-size: 16px;
     color: white;
@@ -30,7 +31,6 @@ button{
     margin-top: 10px;
     margin-bottom: 20px;
     cursor: pointer;
-    -webkit-transition: 0.2s;
     transition: 0.2s;
 }
 
@@ -49,13 +49,10 @@ button:hover {
     border-radius: 15px;
     width: 100%;
     max-width: 1920px;
-    height: 100%;
-    max-height: 1080px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
-
 main {
     display: flex;
     height: 100%;
@@ -66,7 +63,7 @@ main {
 .room{
     background-color: #EEF7FF;
     border-radius: 10px;
-    width: 30%;
+    width: 20%;
     margin-right: 50px; 
 }
 
@@ -106,37 +103,41 @@ main {
 .chatbox {
     background-color: #EEF7FF;
     border-radius: 10px;
-    width: 100%;
-    margin-right: 50px;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: #EEF7FF;
+    border-radius: 10px;
+    width: 50%;
+    margin-right: 50px; 
 }
 
-.chatbox h2{
+.chatbox h2 {
     color: #4D869C;
-    margin-top: 25px;
     text-align: center;
-    font-size: 32px;
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
 .messages {
-    margin-bottom: 48%;
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    
 }
 
-.input-box {
-    display: flex;
-    justify-content: center;
-    margin-top: 66%;
+.messages::-webkit-scrollbar {
+    display: none;  
 }
 
 .input-box input {
-    width: 93%;
+    width: 90%;
     font-size: 16px;
-    padding: 100px;
+    padding: 10px;
     border-radius: 10px;
     border: 2px solid #cccc;
-    text-align: left;
-    padding-top: 20px;
-    padding-left: 20px;
     outline: none;
 }
 
@@ -152,6 +153,10 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #EEF7FF;
+    border-radius: 10px;
+    width: 30%;
+    margin-right: 50px; 
 }
 
 .image-placeholder {
@@ -202,12 +207,9 @@ main {
     color: #4D869C;
 }
 
-
 .memory {
     width: 85%;
     text-align: left;
     font-size: 14px;
     font-weight: bolder;
 }
-
-
