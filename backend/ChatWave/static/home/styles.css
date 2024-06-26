@@ -125,12 +125,58 @@ main {
     flex-grow: 1;
     overflow-y: auto;
     margin-bottom: 20px;
-    
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.messages:hover {
+    background-color: #f1f1f1;
 }
 
 .messages::-webkit-scrollbar {
-    display: none;  
+    width: 12px;
 }
+
+.messages::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.3);
+    border-radius: 6px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 100, 100, 0.5);
+}
+
+.messages::-webkit-scrollbar-track {
+    background: rgba(200, 200, 200, 0.1);
+    border-radius: 6px;
+}
+
+.messages li {
+    list-style-type: none;
+    margin-bottom: 8px;
+    padding: 12px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.messages li:last-child {
+    margin-bottom: 0;
+}
+
+.messages li.sender {
+    background-color: #dcf8c6;
+}
+
+.messages li.receiver {
+    background-color: #e0e0e0;
+}
+
+
+
 
 .input-box input {
     width: 90%;
