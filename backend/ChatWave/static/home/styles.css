@@ -181,11 +181,26 @@ main {
 }
 
 .messages li.sender {
-    background-color: #dcf8c6;
+    background-color: #2e3925;
 }
 
 .messages li.receiver {
     background-color: #e0e0e0;
+}
+
+.sender {
+    background-color: #d1e7ff;
+    margin-left: auto;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+/* Receiver message styles */
+.receiver {
+    background-color: #e1ffd1;
+    margin-right: auto;
+    justify-content: flex-start;
+    text-align: left;
 }
 
 

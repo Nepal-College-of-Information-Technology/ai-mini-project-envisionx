@@ -20,16 +20,16 @@ def homePageLogic(request):
             message.save()
             context = {
                 'message': message,
+                'user': request.user,
             }
             return render(request, 'partials/chat_message_p.html', context)
         else:
-            
             return JsonResponse({'errors': form.errors}, status=400)
     else:
         if request.method == 'POST':
             action = request.POST.get('action')
             if action == 'logout':
-                print("logout clicked!")
+                # print("logout clicked!")
                 logout(request)
                 return redirect('login')
             form = ChatMessagesForm(request.POST)
@@ -38,6 +38,6 @@ def homePageLogic(request):
                 message.author = request.user
                 message.room = chat_room
                 message.save()
-                form = ChatMessagesForm()  
+                form = ChatMessagesForm()
 
-    return render(request, 'index.html', {'chat_messages': chat_messages, 'form': form})
+    return render(request, 'index.html', {'chat_messages': chat_messages, 'form': form, 'user': request.user})
