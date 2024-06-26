@@ -8,5 +8,5 @@ class ChatMessagesForm(ModelForm):
         model = ChatRoomMessages
         fields = ['body']
         widgets = {
-            'body': forms.TextInput(attrs={'placeholder': 'Chat here..', 'class': 'p-2 text black', 'maxlength': '250', 'autofocus': True})
+            'body': forms.TextInput(attrs={'placeholder': 'Chat here..', 'class': 'p-2 text black', 'maxlength': '250', 'autocomplete':"off", 'autofocus': True})
         }

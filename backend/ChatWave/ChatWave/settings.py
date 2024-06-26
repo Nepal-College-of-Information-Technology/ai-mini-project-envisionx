@@ -84,7 +84,7 @@ TEMPLATES = [
 ]
 
 # WSGI_APPLICATION = 'ChatWave.wsgi.application'
-
+REFERRER_POLICY = 'strict-origin-when-cross-origin'
 ASGI_APPLICATION = "ChatWave.asgi.application"
 
 CHANNEL_LAYERS = {

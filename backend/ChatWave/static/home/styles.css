@@ -82,6 +82,8 @@ main {
     align-items: center;
 }
 
+
+
 .room .button-room-container button {
     background-color: #4D869C;
     font-size: 16px;
@@ -156,30 +158,56 @@ main {
 
 .messages li {
     list-style-type: none;
-    margin-bottom: 8px;
-    padding: 12px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    padding: 16px;
+    background-color: #4CA3B3; /* Muted teal color */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
+
+.messages li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
 
 .messages li:last-child {
     margin-bottom: 0;
 }
 
 .messages li.sender {
-    background-color: #dcf8c6;
+    background-color: #2e3925;
 }
 
 .messages li.receiver {
     background-color: #e0e0e0;
 }
 
+.sender {
+    background-color: #d1e7ff;
+    margin-left: auto;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+/* Receiver message styles */
+.receiver {
+    background-color: #e1ffd1;
+    margin-right: auto;
+    justify-content: flex-start;
+    text-align: left;
+}
+
 
 
 
 .input-box input {
-    width: 90%;
+    width: 94%;
     font-size: 16px;
     padding: 10px;
     border-radius: 10px;
