@@ -1,1 +1,9 @@
-<li>{{message.author}} : {{ message.body }} </li>
+{% if message.author == user %}
+
+
+    <li>{{ message.author }}: {{ message.body }}</li>
+{% else %}
+    <li>{{ message.author }}: {{ message.body }}</li>
+{% endif %}
+
+<script>scrollToBottom()</script>

@@ -2,85 +2,93 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
     <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ChatBox</title>
     <link rel="stylesheet" type="text/css" href="{% static 'home/styles.css' %}" />
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <header>
-        <img class="header-image" src="{% static 'home/chatwave.png' %}" alt="ChatWave" />
-        <form method="post" action="{% url 'home' %}">
-          {% csrf_token %}
-          <div class="button-header-container">
-            <button type="submit" name="action" value="logout">Logout</button>
-          </div>
-        </form>
-      </header>
-      <main>
-        <div class="room">
-          <h2>Room</h2>
-          <div class="button-room-container">
-            <button>Room 1</button>
-            <button>Room 2</button>
-            <button>Room 3</button>
-            <button>Room 4</button>
-            <button>Room 5</button>
-          </div>
-        </div>
-        <div class="chatbox" id="chatbox">
-          <h2>ChatBox</h2>
-          <div class="messages" id="messages">
-            {% for message in chat_messages reversed %}
-              {% include 'chat_message.html' %}
-            {% endfor %}
-          </div>
-          <div class="input-box">
-            <form 
-              hx-ext="ws"
-              ws-connect="ws/chat/Room%201/"
-              ws-send
-              _="on htmx:wsAfterSend reset() me">
-              {% csrf_token %}
-              {{ form.body }}
+        <header>
+            <img class="header-image" src="{% static 'home/chatwave.png' %}" alt="ChatWave" />
+            <form method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <div class="button-header-container">
+                    <button type="submit" id="logout" name="action" value="logout">Logout</button>
+                </div>
             </form>
-          </div>
-        </div>
-        <div class="mood-section">
-          <div class="image-placeholder">
-            <div style="position: relative; padding-bottom: 67%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-              <iframe src="https://www.youtube.com/embed/Ks-_Mh1QhMc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 120%;"></iframe>
+        </header>
+        <main>
+            <div class="room">
+                <h2>Room</h2>
+                <div class="button-room-container">
+                    <button>Room 1</button>
+                    <button>Room 2</button>
+                    <button>Room 3</button>
+                    <button>Room 4</button>
+                    <button>Room 5</button>
+                </div>
             </div>
-          </div>
-          <div class="button-container">
-            <button>Change</button>
-            <button>Add to playlist</button>
-          </div>
-          <div class="current-mood">
-            <h3>Current Mood</h3>
-            <p>Sad</p>
-          </div>
-          <div class="memory">
-            <h2>Memory</h2>
-            <div>
-              <h2>This is a different section for memories</h2>
+            <div class="chatbox" id="chatbox">
+                <h2>ChatBox</h2>
+                <div class="messages" id="messages">
+                    {% for message in chat_messages reversed %}
+                        {% include 'chat_message.html' %}
+                    {% endfor %}
+                </div>
+                <div class="input-box">
+                    <form 
+                        hx-ext="ws"
+                        ws-connect="ws/chat/Room%201/"
+                        ws-send
+                        _="on htmx:wsAfterSend reset() me">
+                        {% csrf_token %}
+                        {{ form.body }}
+                    </form>
+                </div>
             </div>
-          </div>
-        </div>
-      </main>
+            <div class="mood-section">
+                <div class="image-placeholder">
+                    <div style="position: relative; padding-bottom: 67%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+                        <iframe src="https://www.youtube.com/embed/Vn4bBO78bJc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 120%;"></iframe>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button>Change</button>
+                    <button>Add to playlist</button>
+                </div>
+                <div class="current-mood">
+                    <h3>Current Mood</h3>
+                    <p>Sad</p>
+                </div>
+                <div class="memory">
+                    <h2>Memory</h2>
+                    <div>
+                        <h2>This is a different section for memories</h2>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
+    <script>
+        function scrollToBottom() {
+            var messagesContainer = document.getElementById("messages");
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
 
-      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            scrollToBottom();
+        });
 
-        
-      </script>
-
-      
-  </body>
+        document.addEventListener("htmx:afterSettle", function(evt) {
+            scrollToBottom();
+        });
+    </script>
+</body>
 </html>
