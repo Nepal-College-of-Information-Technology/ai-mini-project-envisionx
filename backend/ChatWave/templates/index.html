@@ -59,8 +59,13 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    <button>Change</button>
+
+                    <form method="post">
+                    {% csrf_token %}    
+                    <button type="submit" id="Change" name="action" value="Change">Change</button>
+                    </form>
                     <button>Add to playlist</button>
+
                 </div>
                 <div class="current-mood">
                     <h3>Current Mood</h3>

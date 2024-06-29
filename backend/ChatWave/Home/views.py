@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect,HttpResponse
 from django.http import JsonResponse
 from .models import ChatRoom
 from .forms import ChatMessagesForm
@@ -14,23 +14,29 @@ import re
 import pandas as pd
 from nltk.stem import WordNetLemmatizer
 from keras.preprocessing.sequence import pad_sequences
+import os
 
 @login_required
 def homePageLogic(request):
     chat_room = get_object_or_404(ChatRoom, room_name='Room 1')
     chat_messages = chat_room.messages.all()
     form = ChatMessagesForm()
+    
 
     if request.method == 'POST':
-        print(1)
         action = request.POST.get('action')
         print(action)
         if action == 'logout':
             logout(request)
             return redirect('login')
         
+        if action == 'Change':
+            #here the main plan is to retrieve atleast 10 messages from the database for the specific user. If there are less than 10 messages,
+            #then disiplay "not enough data or something similar", and if there is enough data then run another function will that will average the data
+            #from the 10 messages and return a youtube link corresponding to the result. We update the link according to the stats
+            print(modelTest("I have had a tough day today"))
+        
         form = ChatMessagesForm(request.POST)
-        print(form)
         if form.is_valid():
 
             print("2")
@@ -49,8 +55,10 @@ def homePageLogic(request):
     return render(request, 'index.html', {'chat_messages': chat_messages, 'form': form, 'user': request.user})
 
 def modelTest(message):
-    new_model = tf.keras.models.load_model('././model/sentimentmodel.h5')
-    with open('././model/tokenizer.json') as json_file:
+    # model_path = os.path.abspath('../../model/sentimentmodel.h5')
+    # print(model_path)
+    new_model = tf.keras.models.load_model('../../model/sentimentmodel.h5')
+    with open('../../model/tokenizer.json') as json_file:
         json_string = json_file.read()
 
     tokenizer1 = tf.keras.preprocessing.text.tokenizer_from_json(json_string)
