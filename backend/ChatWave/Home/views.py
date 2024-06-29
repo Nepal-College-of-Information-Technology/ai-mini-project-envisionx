@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect,HttpResponse
 from django.http import JsonResponse
-from .models import ChatRoom
+from .models import ChatRoom,ChatRoomMessages
 from .forms import ChatMessagesForm
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -14,6 +14,7 @@ import re
 import pandas as pd
 from nltk.stem import WordNetLemmatizer
 from keras.preprocessing.sequence import pad_sequences
+from django.contrib import messages
 import os
 
 @login_required
@@ -34,7 +35,24 @@ def homePageLogic(request):
             #here the main plan is to retrieve atleast 10 messages from the database for the specific user. If there are less than 10 messages,
             #then disiplay "not enough data or something similar", and if there is enough data then run another function will that will average the data
             #from the 10 messages and return a youtube link corresponding to the result. We update the link according to the stats
-            print(modelTest("I have had a tough day today"))
+
+            messageList = ChatRoomMessages.objects.filter(author=request.user)
+            messageL = []
+
+            for message in messageList:
+                messageL.append(message.body)
+
+            print(len(messageL))
+            if (len(messageL)) < 10:
+                 messages.info(request, 'Requires atleast 10 messages to enable music feature!')
+                
+            else:
+                youtubelink = "https://www.youtube.com/embed/Vn4bBO78bJc"
+                return render(request, 'index.html', {'chat_messages': chat_messages, 'form': form, 'user': request.user, "youtubelink": youtubelink})
+
+                #  return render(request, 'index.html', {'chat_messages': chat_messages, 'form': form, 'user': request.user})
+
+            # print(modelTest("I have had a tough day today"))
         
         form = ChatMessagesForm(request.POST)
         if form.is_valid():
