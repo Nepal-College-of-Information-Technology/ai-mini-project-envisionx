@@ -42,7 +42,7 @@
                     {% endfor %}
                 </div>
                 <div class="input-box">
-                    <form 
+                    <form name="inputform" id = "inputform"
                         hx-ext="ws"
                         ws-connect="ws/chat/Room%201/"
                         ws-send
@@ -89,6 +89,9 @@
         document.addEventListener("htmx:afterSettle", function(evt) {
             scrollToBottom();
         });
+
+
+        on
     </script>
 </body>
 </html>
