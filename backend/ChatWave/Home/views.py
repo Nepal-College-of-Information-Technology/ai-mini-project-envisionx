@@ -13,9 +13,13 @@ from nltk.stem import SnowballStemmer
 import re
 import pandas as pd
 from nltk.stem import WordNetLemmatizer
+import keras
+
 from keras.preprocessing.sequence import pad_sequences
 from django.contrib import messages
 import os
+from tensorflow.keras.preprocessing.text import Tokenizer
+
 
 @login_required
 def homePageLogic(request):
@@ -42,13 +46,16 @@ def homePageLogic(request):
             for message in messageList:
                 messageL.append(message.body)
 
-            print(len(messageL))
+            # print(len(messageL))
             if (len(messageL)) < 10:
                  messages.info(request, 'Requires atleast 10 messages to enable music feature!')
                 
             else:
-                youtubelink = "https://www.youtube.com/embed/Vn4bBO78bJc"
-                return render(request, 'index.html', {'chat_messages': chat_messages, 'form': form, 'user': request.user, "youtubelink": youtubelink})
+                sentiment = msgPick(messageL[:10])
+                print(sentiment)
+                songLink = pickSong(sentiment)
+                # songLink = "https://www.youtube.com/embed/I35paFqFOPk"
+                return render(request, 'index.html', {'chat_messages': chat_messages, 'form': form, 'user': request.user, "youtubelink": songLink})
 
                 #  return render(request, 'index.html', {'chat_messages': chat_messages, 'form': form, 'user': request.user})
 
@@ -72,6 +79,44 @@ def homePageLogic(request):
 
     return render(request, 'index.html', {'chat_messages': chat_messages, 'form': form, 'user': request.user})
 
+def pickSong(sentiment):
+    if sentiment == "calm":
+        return "https://www.youtube.com/embed/xRcWlA1I9z0"
+    elif sentiment == "sad":
+        return "https://www.youtube.com/embed/MVeeRCRw5kM"
+    else:
+        return "https://www.youtube.com/embed/I35paFqFOPk"
+
+
+def msgPick(messageL: list):
+
+    #discard the messages that have a length of less than 10
+    
+    # print(messageL)
+
+    results = []
+    for msg in messageL:
+        if len(msg) < 10:
+            continue  
+        else:
+            result = modelTest(msg)  
+            results.append(result)
+
+    count_calm = results.count("calm")
+    count_sad = results.count("sad")
+    count_happy = results.count("happy")
+
+    print(results)
+
+    counts = {'calm': count_calm, 'sad': count_sad, 'happy': count_happy}
+
+    max_count_variable = max(counts, key=counts.get)
+
+    return max_count_variable
+
+
+
+
 def modelTest(message):
     # model_path = os.path.abspath('../../model/sentimentmodel.h5')
     # print(model_path)
@@ -80,6 +125,7 @@ def modelTest(message):
         json_string = json_file.read()
 
     tokenizer1 = tf.keras.preprocessing.text.tokenizer_from_json(json_string)
+    tokenizer1.oov_token = '<UNK>'
 
     nltk.download('stopwords')
     nltk.download('wordnet')
@@ -107,7 +153,7 @@ def modelTest(message):
         return " ".join(tokens)
     
     text = message
-    words_to_check = ["I", "you", "he", "she", "they", "we", "The", 'the', "I've"]  
+    words_to_check = ["I", "IT","it", "you", "he", "she", "they", "we", "The", 'the', "I've", "this", "This", "i", "I'm", "It", 'it', "It's" ,"it's" , "how", "How", "Memories", "memories"]  
 
     words_in_text = text.split()
 
@@ -123,7 +169,11 @@ def modelTest(message):
     list(text)
     text = textcleaning(text)
     print(text)
+    
+
+    
     tokenizer1.fit_on_texts([text])
+    
     sequences = tokenizer1.texts_to_sequences([text])
 
 
@@ -140,7 +190,7 @@ def modelTest(message):
         result = "calm"
     else:
         index = np.argmax(predictions)
-        if (index == 1):
+        if (index == 0):
             result = "sad"
         else:
             result = "happy"
