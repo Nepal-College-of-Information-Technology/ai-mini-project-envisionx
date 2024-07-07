@@ -15,6 +15,12 @@ body {
     margin: 0;
 }
 
+.logo-section .logo {
+    max-width: 65%;
+    height: auto;
+    margin-top: -55px;
+}
+
 .container {
     display: flex;
     width: 100%;
@@ -37,7 +43,7 @@ body {
 
 .login-section {
     flex: 1;
-    margin-left: 100px;
+    margin-left: 55px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -99,4 +105,21 @@ button:hover {
 
 .sign-text a:hover {
     color: #3E6C7E;
+}
+
+.messages {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.messages ul {
+    list-style-type: none;
+    padding: 0;
+}
+.messages li {
+    margin: 5px 0;
+    padding: 5px;
+    color: #d9534f; 
 }

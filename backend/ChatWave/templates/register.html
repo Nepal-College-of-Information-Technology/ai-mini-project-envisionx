@@ -1,59 +1,47 @@
-{% extends 'main.html' %} {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'home/styles1.css' %}">
+</head>
 <body>
-  <div class="container">
-    <div class="logo-section">
-      <p>A</p>
-    </div>
-    <div class="login-section">
-      <h2>Register</h2>
-      <form id="loginForm" method="post" action="{% url 'register' %}">
-        {% csrf_token %}
-        <div class="input-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Enter your username"
-            required
-          />
+    <div class="container">
+        <div class="logo-section">
+            <img class="logo" src = "{% static 'home/chatwave.png' %}" alt="ChatWave"/>
         </div>
-        <div class="input-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          />
+        <div class="login-section">
+            <h2>Register</h2>
+            <form id="loginForm" method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name = "email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirmpassword">Confirm Password</label>
+                    <input type="password" id="cpassword" name="cpassword" placeholder="Re-enter your password" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            {% if messages %}
+            <div class="messages">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
         </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            name="password"
-            required
-          />
-        </div>
-        <div class="input-group">
-          <label for="confirmpassword">Confirm Password</label>
-          <input
-            type="password"
-            id="cpassword"
-            name="confirm"
-            placeholder="Re-enter your password"
-            required
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-      <p class="sign-text">
-        Already have an account? <a href="login.html">Sign in</a>
-      </p>
-    </div>
-  </div>
-</body>
-{% endblock %}
+        {% endif %}
+            <p class="sign-text">Already have an account? <a href="login">Sign in</a></p>
+
