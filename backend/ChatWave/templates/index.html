@@ -1,12 +1,11 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
     <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
-    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ChatBox</title>
@@ -36,26 +35,25 @@
             </div>
             <div class="chatbox" id="chatbox">
                 <h2>ChatBox</h2>
+                {% include 'partials/online_count.html' %}
                 <div class="messages" id="messages">
-                    {% for message in chat_messages reversed %}
-                        {% include 'chat_message.html' %}
+                    {% for message in chat_messages reversed %} 
+                        {% include 'chat_message.html' %} 
                     {% endfor %}
                 </div>
                 <div class="input-box">
-                    <form 
-                        hx-ext="ws"
-                        ws-connect="ws/chat/Room%201/"
-                        ws-send
-                        _="on htmx:wsAfterSend reset() me">
-                        {% csrf_token %}
-                        {{ form.body }}
+                    <form hx-ext="ws" ws-connect="ws/chat/Room%201/" ws-send _="on htmx:wsAfterSend reset() me">
+                        {% csrf_token %} {{ form.body }}
                     </form>
                 </div>
             </div>
             <div class="mood-section">
                 <div class="image-placeholder">
                     <div style="position: relative; padding-bottom: 67%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-                        <iframe src="https://www.youtube.com/embed/Vn4bBO78bJc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 120%;"></iframe>
+                        <iframe src="https://www.youtube.com/embed/Vn4bBO78bJc"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                frameborder="0" allowfullscreen
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 120%;"></iframe>
                     </div>
                 </div>
                 <div class="button-container">
@@ -75,18 +73,17 @@
             </div>
         </main>
     </div>
-
     <script>
         function scrollToBottom() {
             var messagesContainer = document.getElementById("messages");
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             scrollToBottom();
         });
 
-        document.addEventListener("htmx:afterSettle", function(evt) {
+        document.addEventListener("htmx:afterSettle", function (evt) {
             scrollToBottom();
         });
     </script>
