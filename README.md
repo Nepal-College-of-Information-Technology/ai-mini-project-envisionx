@@ -4,10 +4,10 @@ The AI Mini Project aims to understand people's sentiment through text analysis.
 
 ## Team Members
 
-- Backend (website backend and model development): Aryan Jha
-- Frontend (HTML, CSS): Prabal Piya
-- Data Collection, backend (Database, model development): Aayushman Amatya
--Frontend and Documentation: Sambridhha Dangol
+- Backend (website backend and model development): Aryn
+- Frontend (HTML, CSS): Prabal 
+- Data Collection, backend (Database, model development): Aayushman 
+- Frontend and Documentation: Sambridhha 
 
 
 ## Project Details
